@@ -22,38 +22,38 @@ A Java 17 implementation of the Systems Engineering Treasure Hunt project.
 From this folder, run:
 
 ```bash
-javac -d out $(find src -name "*.java")
+javac -d dist $(find src -name "*.java")
 ```
 
 On Windows PowerShell, use:
 
 ```powershell
 $files = Get-ChildItem -Recurse src -Filter *.java | ForEach-Object { $_.FullName }
-javac -d out $files
+javac -d dist $files
 ```
 
 ## Run the Swing interface
 
 ```bash
-java -cp out treasurehunt.Main
+java -cp dist treasurehunt.Main
 ```
 
-## Run the console interface
+## Run the console interfacex
 
 ```bash
-java -cp out treasurehunt.Main --console
+java -cp dist treasurehunt.Main --console
 ```
 
 Optional seed:
 
 ```bash
-java -cp out treasurehunt.Main --console --seed 12345
+java -cp dist treasurehunt.Main --console --seed 12345
 ```
 
 For Swing:
 
 ```bash
-java -cp out treasurehunt.Main --seed 12345
+java -cp dist treasurehunt.Main --seed 12345
 ```
 
 The same seed and configuration produce the same world with this version of the generator. Choosing "New game" derives a new seed from the original seed.

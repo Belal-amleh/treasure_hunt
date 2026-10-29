@@ -110,8 +110,8 @@ public final class SwingUI implements GameUI {
             case INVALID_MOVE -> "Can't move outside the grid.";
             case TRAP_TRIGGERED -> "Trap! You lost 3 additional moves.";
             case ENEMY_ENCOUNTERED -> "Enemy! You lost one life.";
-            case WON -> "You found the treasure. You win!";
-            case LOST -> "You ran out of moves or lives. You lose.";
+            case WON -> "Congratulations you achieve the treasure";
+            case LOST -> "You lose, better luck next time";
             default -> "You moved.";
         };
     }
@@ -128,7 +128,7 @@ public final class SwingUI implements GameUI {
         for (int r = 0; r < grid.getRows(); r++) {
             for (int c = 0; c < grid.getColumns(); c++) {
                 char symbol = (player.getRow() == r && player.getColumn() == c)
-                        ? 'P' : grid.getTile(r, c).getSymbol();
+                        ? '*' : grid.getTile(r, c).getSymbol();
                 JButton cell = new JButton(String.valueOf(symbol));
                 cell.setFont(new Font(Font.MONOSPACED, Font.BOLD, 16));
                 cell.setFocusable(false);
@@ -171,8 +171,11 @@ public final class SwingUI implements GameUI {
     @Override
     public void askReplayOrExit() {
         Object[] options = {"New Game", "Exit"};
+        String endMessage = game.getGameState() == GameState.WON
+        ? "Congratulations you achieve the treasure"
+        : "You lose, better luck next time";
         int choice = JOptionPane.showOptionDialog(frame,
-                "Game over: " + game.getGameState() + "\nWould you like to play again?",
+                endMessage + "\nWould you like to play again?",
                 "Treasure Hunt", JOptionPane.YES_NO_OPTION, JOptionPane.INFORMATION_MESSAGE,
                 null, options, options[0]);
         if (choice == 0) {

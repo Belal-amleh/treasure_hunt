@@ -1,7 +1,6 @@
 package treasurehunt.ui;
 
 import java.util.Scanner;
-
 import treasurehunt.engine.Game;
 import treasurehunt.engine.GameState;
 import treasurehunt.engine.MoveResult;
@@ -58,8 +57,8 @@ public final class ConsoleUI implements GameUI {
             case INVALID_MOVE: return "Invalid move: the destination is outside the grid or the game has ended.";
             case TRAP_TRIGGERED: return "Trap! You lost 3 additional moves.";
             case ENEMY_ENCOUNTERED: return "Enemy! You lost one life.";
-            case WON: return "You found the treasure. You win!";
-            case LOST: return "You ran out of moves or lives. You lose.";
+            case WON: return "Congratulations you achieve the treasure";
+            case LOST: return "You lose, better luck next time";
             case TREASURE_FOUND: return "Treasure found!";
             default: return "You moved.";
         }
@@ -74,7 +73,7 @@ public final class ConsoleUI implements GameUI {
         for (int r = 0; r < grid.getRows(); r++) {
             for (int c = 0; c < grid.getColumns(); c++) {
                 if (player.getRow() == r && player.getColumn() == c) {
-                    System.out.print("P ");
+                    System.out.print("* ");
                 } else {
                     Tile tile = grid.getTile(r, c);
                     System.out.print(tile.getSymbol() + " ");

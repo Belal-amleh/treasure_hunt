@@ -8,6 +8,6 @@ public final class TreasureTile extends Tile {
 
     @Override
     public char getSymbol() {
-        return 'T';
+        return 'G';
     }
 }
